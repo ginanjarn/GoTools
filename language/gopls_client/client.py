@@ -1,17 +1,10 @@
 """client"""
 
-import time
 import logging
 
-from pathlib import Path
 from typing import Optional
-import sublime
 
-from ..constant import (
-    COMMAND_PREFIX,
-    LOGGING_CHANNEL,
-    PACKAGE_NAME,
-)
+from ..constant import LOGGING_CHANNEL
 from ..plugin_core.lsp_client import StandardIO
 from ..plugin_core.client import BaseClient, ServerArguments
 from ..plugin_core.sublime_settings import Settings

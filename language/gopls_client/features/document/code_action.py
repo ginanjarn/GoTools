@@ -4,8 +4,8 @@ from typing import Any
 
 from ....plugin_core.lsp_client import Response
 from ....plugin_core.session import Session
-from ....plugin_core.fetures.document.code_action import DocumentCodeActionMixins
-from ....plugin_core.fetures.workspace.edit import WorkspaceEdit
+from ....plugin_core.features.document.code_action import DocumentCodeActionMixins
+from ....plugin_core.features.workspace.edit import WorkspaceEdit
 
 
 LineCharacter = namedtuple("LineCharacter", ["line", "character"])

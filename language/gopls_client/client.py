@@ -28,6 +28,8 @@ from ..plugin_core.fetures.workspace.edit import WorkspaceApplyEditMixins
 
 from ..plugin_core.fetures.window.message import WindowMessageMixins
 
+from .features.document.code_action import GoplsDocumentCodeActionMixins
+
 
 class GoplsClient(
     BaseClient,
@@ -40,6 +42,7 @@ class GoplsClient(
     DocumentHoverMixins,
     DocumentRenameMixins,
     DocumentSignatureHelpMixins,
+    GoplsDocumentCodeActionMixins,
     WorkspaceExecuteCommandMixins,
     WorkspaceApplyEditMixins,
     WindowMessageMixins,
@@ -62,6 +65,8 @@ class GoplsClient(
             "textDocument/definition": self.handle_textdocument_definition,
             "textDocument/prepareRename": self.handle_textdocument_preparerename,
             "textDocument/rename": self.handle_textdocument_rename,
+            "textDocument/codeAction": self.handle_textdocument_code_action,
+            "codeAction/resolve": self.handle_code_action_resolve,
         }
         self.handler_map.update(default_handlers)
 

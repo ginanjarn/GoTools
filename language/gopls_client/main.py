@@ -38,6 +38,7 @@ from ..plugin_core.fetures.document.rename import (
     _PrepareRenameCommand,
     _RenameCommand,
 )
+from ..plugin_core.fetures.document.code_action import _CodeActionCommand
 
 LOGGER = logging.getLogger(LOGGING_CHANNEL)
 CLIENT = get_client()
@@ -55,6 +56,7 @@ _DocumentFormattingCommand.client = CLIENT
 _GotoDefinitionCommand.client = CLIENT
 _PrepareRenameCommand.client = CLIENT
 _RenameCommand.client = CLIENT
+_CodeActionCommand.client = CLIENT
 
 
 def setup_logger(level: int):
@@ -178,6 +180,10 @@ class GoToolsPrepareRenameCommand(_PrepareRenameCommand):
 
 class GoToolsRenameCommand(_RenameCommand):
     """GoToolsRenameCommand"""
+
+
+class GoToolsCodeActionCommand(_CodeActionCommand):
+    """GoToolsCodeActionCommand"""
 
 
 class GoToolsApplyTextChangesCommand(_ApplyTextChangesCommand):

@@ -4,19 +4,16 @@
 	"tab_size": 4,
 
 	// Set to true to insert spaces when tab is pressed
-	"translate_tabs_to_spaces": true,
+	"translate_tabs_to_spaces": false,
+
+	// Set to false to disable detection of tabs vs. spaces on load
+	"detect_indentation": false,
 
 	// File indexing parses all files in the sidebar, and builds an index of
 	// their symbols. This is required for Goto Definition to work.
 	"index_files": false,
 
-	// Python executable path.
-	"python": "",
-
 	// Environment variables.
 	// Variables must stored as mapping eg. {"key":value}.
 	"envs": null,
-
-	// Logging level: 'error', 'warning', 'info', 'verbose'
-	"logging": "error",
 }

@@ -24,5 +24,11 @@
 		"command": "go_tools_prepare_rename",
 		"id": "go_tools",
 		"mnemonic": "R"
+	},
+	{
+		"caption": "Code action...",
+		"command": "go_tools_code_action",
+		"id": "go_tools",
+		"mnemonic": "a"
 	}
 ]

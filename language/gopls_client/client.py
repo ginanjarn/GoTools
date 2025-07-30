@@ -47,28 +47,7 @@ class GoplsClient(
     WorkspaceApplyEditMixins,
     WindowMessageMixins,
 ):
-    def _set_default_handler(self):
-        default_handlers = {
-            "initialize": self.handle_initialize,
-            # window
-            "window/logMessage": self.handle_window_logmessage,
-            "window/showMessage": self.handle_window_showmessage,
-            # workspace
-            "workspace/applyEdit": self.handle_workspace_applyedit,
-            "workspace/executeCommand": self.handle_workspace_executecommand,
-            # textDocument
-            "textDocument/hover": self.handle_textdocument_hover,
-            "textDocument/completion": self.handle_textdocument_completion,
-            "textDocument/signatureHelp": self.handle_textdocument_signaturehelp,
-            "textDocument/publishDiagnostics": self.handle_textdocument_publishdiagnostics,
-            "textDocument/formatting": self.handle_textdocument_formatting,
-            "textDocument/definition": self.handle_textdocument_definition,
-            "textDocument/prepareRename": self.handle_textdocument_preparerename,
-            "textDocument/rename": self.handle_textdocument_rename,
-            "textDocument/codeAction": self.handle_textdocument_code_action,
-            "codeAction/resolve": self.handle_code_action_resolve,
-        }
-        self.handler_map.update(default_handlers)
+    """Gopls Client"""
 
 
 def get_client() -> GoplsClient:

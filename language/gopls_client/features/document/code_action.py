@@ -1,10 +1,11 @@
 from collections import namedtuple
 from functools import wraps
-from typing import Any
 
-from ....plugin_core.lsp_client import Response
 from ....plugin_core.session import Session
-from ....plugin_core.features.document.code_action import DocumentCodeActionMixins
+from ....plugin_core.features.document.code_action import (
+    DocumentCodeActionMixins,
+    CodeActionResolveMixins,
+)
 from ....plugin_core.features.workspace.edit import WorkspaceEdit
 
 
@@ -23,29 +24,22 @@ def must_initialized(func):
     return wrapper
 
 
-class CodeActionResolveMixins:
+class GoplsCodeActionResolveMixins(CodeActionResolveMixins):
 
-    @must_initialized
-    def code_action_resolve(self, params: Any):
-        self.message_pool.send_request("codeAction/resolve", params)
-
-    def handle_code_action_resolve(self, session: Session, params: Response):
-        if err := params.error:
-            print(err["message"])
-
-        elif result := params.result:
-            if command := result.get("command"):
-                self.workspace_executecommand(command)
-            else:
-                raise Exception(f"error handle resolve: {result}")
+    def _handle_action(self, session: Session, action: dict) -> None:
+        if edit := action.get("edit"):
+            WorkspaceEdit(session).apply_changes(edit)
+        if command := action.get("command"):
+            self.workspace_executecommand(command)
 
 
-class GoplsDocumentCodeActionMixins(DocumentCodeActionMixins, CodeActionResolveMixins):
+class GoplsDocumentCodeActionMixins(
+    DocumentCodeActionMixins,
+    GoplsCodeActionResolveMixins,
+):
 
     def _handle_selected_action(self, session: Session, action: dict) -> None:
         if edit := action.get("edit"):
             WorkspaceEdit(session).apply_changes(edit)
-        elif "command" in action:
+        if _ := action.get("command"):
             self.code_action_resolve(action)
-        else:
-            raise Exception(f"error handle action: {action}")

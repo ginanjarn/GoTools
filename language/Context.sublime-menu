@@ -13,22 +13,23 @@
 		"caption": "Show Definition",
 		"command": "go_tools_goto_definition",
 		"id": "go_tools",
-		"mnemonic": "i"
+		"mnemonic": "D"
 	},
 	{
 		"caption": "-",
 		"id": "go_tools"
 	},
 	{
-		"caption": "Rename symbol...",
+		"caption": "Rename Symbol...",
 		"command": "go_tools_prepare_rename",
 		"id": "go_tools",
 		"mnemonic": "R"
 	},
 	{
-		"caption": "Code action...",
+		"caption": "Code Action...",
 		"command": "go_tools_code_action",
+		"args" : {"kinds": ["quickfix", "refactor"]},
 		"id": "go_tools",
-		"mnemonic": "a"
+		"mnemonic": "A"
 	}
 ]

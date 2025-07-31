@@ -5,7 +5,7 @@ import logging
 from typing import Optional
 
 from ..constant import LOGGING_CHANNEL
-from ..plugin_core.lsp_client import StandardIO
+from ..plugin_core.transport import StandardIO
 from ..plugin_core.client import BaseClient, ServerArguments
 from ..plugin_core.sublime_settings import Settings
 

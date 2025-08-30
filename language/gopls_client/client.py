@@ -1,6 +1,7 @@
 """client"""
 
 import logging
+import shlex
 
 from typing import Optional
 
@@ -50,9 +51,16 @@ class GoplsClient(
     """Gopls Client"""
 
 
+def log_flags() -> str:
+    """return logging flag"""
+    if LOGGER.level == logging.DEBUG:
+        return "-rpc.trace"
+    return ""
+
+
 def get_client() -> GoplsClient:
     """"""
-    command = ["gopls"]
+    command = shlex.split(f"gopls {log_flags()}")
     return GoplsClient(ServerArguments(command, None), StandardIO)
 
 
